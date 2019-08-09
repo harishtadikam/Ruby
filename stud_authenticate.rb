@@ -1,14 +1,14 @@
 require 'bcrypt'
 module StudAuth
-  def StudAuth.create_hash_digest(password)
+  def create_hash_digest(password)
     BCrypt::Password.create(password)
   end
 
-  def StudAuth.verify_hash_digest(password)
+  def verify_hash_digest(password)
     BCrypt::Password.new(password)
   end
 
-  def StudAuth.create_secure_users(list_of_users)
+  def create_secure_users(list_of_users)
     list_of_users.each do | user_record |
       user_record[:password] = create_hash_digest(user_record[:password])
       puts user_record[:password]
